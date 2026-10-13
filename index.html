@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soluciones Teoría de la Computación IL357</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos originales de la página trampa */
+        body {
+            background-color: #f5f5dc;
+            font-family: "Times New Roman", Times, serif;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+            transition: background-color 0.1s;
+        }
+        h1 { color: #000080; text-align: center; }
+        .warning { color: red; font-weight: bold; font-size: 18px; }
+        a { color: #0000FF; text-decoration: underline; cursor: pointer; font-size: 18px;}
+        
+        /* --- EFECTOS DE TERROR ANALÓGICO --- */
+        
+        /* La clase que vuelve loca a la página */
+        .glitch-active {
+            animation: terror-analogico 0.1s infinite;
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+
+        /* Animación para sacudir y distorsionar colores */
+        @keyframes terror-analogico {
+            0% { transform: translate(0, 0) scale(1); filter: invert(0) contrast(100%); }
+            25% { transform: translate(-5px, 5px) scale(1.02); filter: invert(1) hue-rotate(90deg) contrast(300%); }
+            50% { transform: translate(5px, -5px) scale(0.98); filter: invert(0) grayscale(100%) contrast(500%); }
+            75% { transform: translate(-10px, 2px) scale(1.05); filter: sepia(100%) hue-rotate(300deg) saturate(500%); }
+            100% { transform: translate(5px, 5px) scale(1); filter: invert(1); }
+        }
+
+        /* Filtro de ruido tipo VHS (invisible al inicio) */
+        #vhs-noise {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.8;
+        }
+
+        /* Efecto de sangre cayendo por la pantalla */
+        #blood-screen {
+            position: fixed;
+            top: -120%; /* Empieza escondida arriba */
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: linear-gradient(to bottom, #4a0000 0%, #8a0303 40%, rgba(138,3,3,0.8) 80%, transparent 100%);
+            z-index: 9999;
+            pointer-events: none;
+            transition: top 4s cubic-bezier(0.4, 0, 1, 1); /* Cae lentamente */
+        }
+
+        .blood-falling {
+            top: 0 !important;
+        }
+
+        /* Mensaje subliminal / aterrador */
+        #creepy-text {
+            display: none;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: red;
+            font-size: 80px;
+            font-family: monospace;
+            font-weight: bold;
+            text-shadow: 0 0 10px darkred, 2px 2px 0px black;
+            z-index: 10000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Elementos del susto (ocultos al cargar) -->
+    <div id="vhs-noise"></div>
+    <div id="blood-screen"></div>
+    <div id="creepy-text">NO MIRES ATRÁS</div>
+
+    <!-- Contenido normal de la página -->
+    <div id="normal-content">
+        <marquee scrollamount="5" bgcolor="#FFFF00">¡Bienvenidos a la página de apoyo del curso IL357! Aquí encontrarán las respuestas a la serie de problemas propuestos.</marquee>
+
+        <h1>CURSO IL357 - LENGUAJES Y AUTÓMATAS</h1>
+        <h3>Profesor: Abelardo Gómez Andrade</h3>
+        <hr>
+
+        <p class="warning">AVISO: Este material es solo para estudio y comparación. Favor de no copiar las respuestas directamente en sus entregables.</p>
+
+        <h2>Solucionario Oficial</h2>
+        <p>A continuación se presentan los enlaces para acceder a las respuestas de la guía <strong>"Problemas propuestos IL357 versión final"</strong>.</p>
+
+        <ul>
+            <li>
+                <strong>Sección: Lenguajes Formales</strong> <br>
+                <a href="#" class="trampa">Ver respuesta al Problema 01 (Diseñar un Lenguaje Formal a partir del Alfabeto Σ={a,b,c})</a>
+            </li>
+            <br>
+            <li>
+                <strong>Sección: Gramáticas Formales</strong> <br>
+                <a href="#" class="trampa">Descargar solución al Problema 14 (Árboles de derivación y Jerarquía de Chomsky)</a>
+            </li>
+            <br>
+            <li>
+                <strong>Sección: Autómatas Finitos</strong> <br>
+                <a href="#" class="trampa">Ver diagramas de transición y tablas de estado (Problemas 63 al 74)</a>
+            </li>
+        </ul>
+
+        <hr>
+        <div style="text-align:center;">
+            <p>Si prefieres descargar el documento completo en PDF con todas las soluciones de la unidad:</p>
+            <button class="trampa" style="font-size: 16px; padding: 5px; cursor: pointer;">DESCARGAR SOLUCIONARIO COMPLETO (.PDF)</button>
+        </div>
+        <br>
+        
+        <center>
+            <img src="https://web.archive.org/web/20091027055745/http://geocities.com/CollegePark/4804/undercon.gif" alt="Página en construcción">
+        </center>
+    </div>
+
+    <!-- El script mágico que desata el caos -->
+    <script>
+        let bromaActivada = false;
+
+        function iniciarBroma(evento) {
+            evento.preventDefault(); // Evita que el botón o enlace haga su acción normal
+            
+            if (bromaActivada) return;
+            bromaActivada = true;
+
+            // 1. Insertar el video de YouTube invisible y que se reproduzca solo (Autoplay)
+            let iframe = document.createElement('iframe');
+            iframe.src = "https://www.youtube.com/embed/mp8sVn-qGy0?autoplay=1&controls=0&showinfo=0&autohide=1";
+            iframe.allow = "autoplay";
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+
+            // 2. Activar las distorsiones CSS
+            document.body.classList.add("glitch-active");
+            document.getElementById("vhs-noise").style.display = "block";
+
+            // 3. Dejar caer la sangre y mostrar mensaje después de 1 segundo (para que el susto crezca)
+            setTimeout(() => {
+                document.getElementById("blood-screen").classList.add("blood-falling");
+                document.getElementById("creepy-text").style.display = "block";
+            }, 800);
+            
+            // 4. Cambiar el texto de la página original por caracteres basura para más terror
+            setTimeout(() => {
+                document.getElementById("normal-content").innerHTML = "<h1 style='font-size: 50px; text-align: left;'>H4Y @LG0 C0NM1G0... 3RR0R 404 C0RRuPT3D SYS73M!&@!#*</h1>".repeat(20);
+            }, 1500);
+        }
+
+        // Seleccionar todos los elementos con la clase "trampa" y asignarles el evento de clic
+        document.querySelectorAll('.trampa').forEach(elemento => {
+            elemento.addEventListener('click', iniciarBroma);
+        });
+    </script>
+</body>
+</html>
